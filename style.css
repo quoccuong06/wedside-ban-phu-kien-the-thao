@@ -401,10 +401,23 @@ footer a { color: var(--primary); text-decoration: none; }
 }
 
 .partner-item img {
-    height: 50px;
-    max-width: 100px;
-    object-fit: contain;
+    height: 50px; /* Cố định chiều cao để các logo thẳng hàng */
+    width: auto;
+    max-width: 150px;
+    object-fit: contain; /* Giữ đúng tỷ lệ logo */
+    margin-bottom: 10px;
+    display: block;
 }
+
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 50px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
 
 .partner-item span {
     font-size: 12px;
