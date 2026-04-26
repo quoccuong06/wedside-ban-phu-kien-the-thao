@@ -3,10 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siêu Thị Thể Thao - Cường & Thanh</title>
+    
+    <!-- --- PHẦN SEO: GIÚP HIỂN THỊ LÊN GOOGLE --- -->
+    <title>Siêu Thị Thể Thao - Cường & Thanh | Phụ Kiện Pro</title>
+    <meta name="description" content="Siêu thị phụ kiện thể thao Pro của Cường và Thanh tại LHU. Chuyên cung cấp đồ bóng đá, cầu lông, gym và chạy bộ chất lượng cao.">
+    <meta name="keywords" content="siêu thị thể thao, cường và thanh, phụ kiện thể thao, lhu, đồ tập gym, vợt cầu lông">
+    <meta name="author" content="Đoàn Quốc Cường & Lê Văn Thanh">
+    
+    <!-- Cấu hình hiển thị khi chia sẻ link lên Facebook/Zalo -->
+    <meta property="og:title" content="Siêu Thị Thể Thao - Cường & Thanh">
+    <meta property="og:description" content="Chuyên đồ dùng thể thao chất lượng cao.">
+    <meta property="og:image" content="logo.png">
+    
+    <!-- DÒNG MÃ LOGO TRÊN TAB (FAVICON) -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- 1. THANH TIỆN ÍCH TRÊN CÙNG -->
+<div class="top-bar">
+    <div class="top-bar-left">
+        <a href="#" onclick="alert('Tính năng chọn Ngôn ngữ đang phát triển!')">🌐 Tiếng Việt</a>
+        <a href="#" onclick="alert('Tổng đài hỗ trợ: 0988837447')">❓ Hỗ trợ</a>
+        <a href="#" onclick="alert('Bạn không có thông báo mới')">🔔 Thông báo <span class="badge">0</span></a>
+    </div>
+    <div class="top-bar-right">
+        <a href="#" onclick="openAuth('login')">Đăng nhập</a>
+        <span style="color: #666">|</span>
+        <a href="#" onclick="openAuth('register')">Đăng ký</a>
+    </div>
+</div>
 
 <div class="contact-bar">
     <span>👤 Admin: <b>Đoàn Quốc Cường</b> - 📞 0988837447</span>
@@ -40,6 +68,21 @@
     <button onclick="pay()" id="btn-pay-qr">QUÉT MÃ THANH TOÁN</button>
 </div>
 
+<!-- 2. MODAL ĐĂNG NHẬP / ĐĂNG KÝ -->
+<div id="authModal" class="modal">
+    <div class="modal-content auth-form">
+        <span class="close-btn" onclick="closeAuth()">&times;</span>
+        <h2 id="authTitle">Đăng nhập</h2>
+        <input type="text" id="userEmail" placeholder="Tên đăng nhập hoặc Email">
+        <input type="password" id="userPass" placeholder="Mật khẩu">
+        <div id="registerFields" style="display: none;">
+            <input type="password" placeholder="Xác nhận mật khẩu">
+        </div>
+        <button class="confirm-btn" onclick="handleAuthAction()">Xác nhận</button>
+        <p id="authSwitch" onclick="switchAuth()" style="cursor:pointer; color: #007bff; font-size: 14px; margin-top: 15px;"></p>
+    </div>
+</div>
+
 <div id="qrModal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -56,19 +99,50 @@
     <p><b>Thông tin sinh viên thực hiện:</b></p>
     
     <p>
-        👤 Đoàn Quốc Cường - 124000221: <b>[124000221]</b> | 
-        <a href="https://github.com/quoccuong06]" target="_blank" style="color: #007bff; text-decoration: none;">🔗 GitHub Cường</a>
+        👤 Đoàn Quốc Cường - MSSV: <b>124000221</b> | 
+        <a href="https://github.com/quoccuong06" target="_blank" style="color: #28a745; text-decoration: none;">🔗 GitHub Cường</a>
     </p>
     
     <p>
-        👤 Lê Văn Thanh - 124000512: <b>[124000512]</b> | 
-        <a href="https://github.com/36levanthanh11a15-wq]" target="_blank" style="color: #007bff; text-decoration: none;">🔗 GitHub Thanh</a>
+        👤 Lê Văn Thanh - MSSV: <b>124000512</b> | 
+        <a href="https://github.com/36levanthanh11a15-wq" target="_blank" style="color: #28a745; text-decoration: none;">🔗 GitHub Thanh</a>
     </p>
     
     <p>© 2026 <b>Đoàn Quốc Cường & Lê Văn Thanh</b></p>
 </footer>
 
+<script>
+    function openAuth(type) {
+        document.getElementById('authModal').style.display = 'flex';
+        const title = document.getElementById('authTitle');
+        const regFields = document.getElementById('registerFields');
+        const switchTxt = document.getElementById('authSwitch');
 
+        if (type === 'login') {
+            title.innerText = "Đăng nhập";
+            regFields.style.display = "none";
+            switchTxt.innerText = "Chưa có tài khoản? Đăng ký ngay";
+        } else {
+            title.innerText = "Đăng ký thành viên";
+            regFields.style.display = "block";
+            switchTxt.innerText = "Đã có tài khoản? Đăng nhập";
+        }
+    }
+
+    function closeAuth() {
+        document.getElementById('authModal').style.display = 'none';
+    }
+
+    function switchAuth() {
+        const isLogin = document.getElementById('authTitle').innerText === "Đăng nhập";
+        openAuth(isLogin ? 'register' : 'login');
+    }
+
+    window.onclick = function(event) {
+        let authModal = document.getElementById('authModal');
+        if (event.target == authModal) closeAuth();
+    }
+</script>
 
 <script src="script.js"></script>
 </body>

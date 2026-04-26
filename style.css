@@ -2,6 +2,7 @@
     --primary: #28a745; 
     --dark: #1a1a1a; 
     --price: #e44d26; 
+    --topbar-bg: #2c3e50;
 }
 
 body { 
@@ -11,6 +12,41 @@ body {
     padding-bottom: 100px; 
 }
 
+/* --- THANH TIỆN ÍCH TRÊN CÙNG (MỚI) --- */
+.top-bar {
+    background: var(--topbar-bg);
+    color: white;
+    padding: 8px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.top-bar-left, .top-bar-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.top-bar a { 
+    color: #ddd; 
+    text-decoration: none; 
+    transition: 0.3s;
+}
+
+.top-bar a:hover { color: var(--primary); }
+
+.badge {
+    background: #ff4757;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+/* --- LIÊN HỆ --- */
 .contact-bar { 
     background: #333; 
     color: #ddd; 
@@ -32,6 +68,7 @@ header {
     text-align: center; 
 }
 
+/* --- NAVIGATION --- */
 nav { 
     background: #fff; 
     display: flex; 
@@ -59,6 +96,7 @@ nav button:hover, nav button.active {
     color: white; 
 }
 
+/* --- TÌM KIẾM --- */
 .search-box { text-align: center; margin: 25px; }
 .search-box input { 
     padding: 12px 25px; 
@@ -68,6 +106,7 @@ nav button:hover, nav button.active {
     outline: none; 
 }
 
+/* --- DANH SÁCH SẢN PHẨM --- */
 .container { 
     display: flex; 
     flex-wrap: wrap; 
@@ -112,6 +151,7 @@ nav button:hover, nav button.active {
     font-weight: bold; 
 }
 
+/* --- GIỎ HÀNG CỐ ĐỊNH --- */
 .cart-fixed { 
     position: fixed; 
     right: 25px; 
@@ -136,7 +176,8 @@ nav button:hover, nav button.active {
     font-weight: bold; 
 }
 
-#qrModal { 
+/* --- MODAL (DÙNG CHUNG CHO QR VÀ ĐĂNG NHẬP) --- */
+#qrModal, .modal { 
     display: none; 
     position: fixed; 
     top: 0; 
@@ -159,6 +200,17 @@ nav button:hover, nav button.active {
     position: relative; 
 }
 
+/* --- FORM ĐĂNG NHẬP / ĐĂNG KÝ (MỚI) --- */
+.auth-form h2 { color: #333; margin-bottom: 20px; }
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Giúp input không bị tràn khung */
+}
+
 .qr-img { 
     width: 250px; 
     height: 250px; 
@@ -179,13 +231,15 @@ nav button:hover, nav button.active {
     background: var(--primary); 
     color: white; 
     border: none; 
-    padding: 10px; 
-    border-radius: 5px; 
+    padding: 12px; 
+    border-radius: 8px; 
     width: 100%; 
     cursor: pointer; 
     font-weight: bold; 
+    margin-top: 10px;
 }
 
+/* --- FOOTER --- */
 footer { 
     background: #111; 
     color: #aaa; 
@@ -195,3 +249,4 @@ footer {
 }
 
 footer b { color: #fff; }
+footer a { color: var(--primary); text-decoration: none; }

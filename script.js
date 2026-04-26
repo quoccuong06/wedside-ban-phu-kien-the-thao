@@ -7,6 +7,7 @@ const categories = {
 
 let allProducts = [];
 let currentPage = 'all';
+let isLoggedIn = false; // Biến kiểm tra trạng thái đăng nhập
 
 // Tạo 70 sản phẩm
 const typeKeys = Object.keys(categories);
@@ -64,16 +65,46 @@ function search() {
     render(currentList.filter(p => p.name.toLowerCase().includes(kw)));
 }
 
+// HÀM THANH TOÁN ĐÃ CẬP NHẬT LOGIC ĐĂNG NHẬP
 function pay() {
-    let totalValue = document.getElementById('total').innerText; // Lấy tổng tiền hiện có
+    let totalValue = document.getElementById('total').innerText;
+    
     if(totalValue === "0") {
         alert("Giỏ hàng của bạn đang trống!");
         return;
     }
-    // Chuyển hướng sang trang checkout.html kèm theo tham số tổng tiền
+
+    // Kiểm tra xem đã đăng nhập chưa
+    if (!isLoggedIn) {
+        alert("Bạn phải Đăng nhập / Đăng ký mới có thể thanh toán!");
+        openAuth('login'); // Gọi hàm mở modal đăng nhập từ index.html
+        return;
+    }
+
+    // Nếu đã đăng nhập thì mới cho đi tiếp
     window.location.href = "checkout.html?total=" + totalValue;
 }
 
+// HÀM XỬ LÝ ĐĂNG NHẬP THÀNH CÔNG (Dùng cho nút Xác nhận trong Modal)
+function handleAuthAction() {
+    const title = document.getElementById('authTitle').innerText;
+    
+    if (title === "Đăng nhập") {
+        isLoggedIn = true;
+        alert("Đăng nhập thành công! Bây giờ bạn đã có thể thanh toán.");
+        closeAuth();
+        
+        // Cập nhật Top bar hiển thị tên (giả lập)
+        document.querySelector('.top-bar-right').innerHTML = `
+            <span style="color: #28a745">👤 Chào, Thành viên!</span>
+            <span style="color: #666">|</span>
+            <a href="#" onclick="location.reload()" style="color: white">Đăng xuất</a>
+        `;
+    } else {
+        alert("Đăng ký thành công! Hãy đăng nhập để mua hàng.");
+        openAuth('login');
+    }
+}
 
 function closeModal() {
     document.getElementById("qrModal").style.display = "none";
