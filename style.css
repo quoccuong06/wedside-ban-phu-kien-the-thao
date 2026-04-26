@@ -328,3 +328,38 @@ footer {
 
 footer b { color: #fff; }
 footer a { color: var(--primary); text-decoration: none; }
+/* --- TỐI ƯU CHO ĐIỆN THOẠI (Mobile) --- */
+@media screen and (max-width: 600px) {
+    /* Thu nhỏ chữ ở Header */
+    header h1 { font-size: 20px; }
+
+    /* Thanh menu chuyển thành dạng cuộn ngang */
+    nav { 
+        justify-content: flex-start; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+        padding: 10px;
+    }
+    
+    /* Ô tìm kiếm thu gọn lại */
+    .search-box input { width: 80%; }
+
+    /* Quan trọng: Sản phẩm sẽ hiện 2 cột thay vì 4-5 cột */
+    .product { 
+        width: calc(50% - 20px); 
+        margin: 10px 5px; 
+        padding: 10px;
+    }
+
+    /* Thu nhỏ hình ảnh sản phẩm trên điện thoại */
+    .product img { height: 120px; }
+
+    /* Giỏ hàng cố định thu gọn lại cho đỡ choán chỗ */
+    .cart-fixed {
+        padding: 10px;
+        font-size: 13px;
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
