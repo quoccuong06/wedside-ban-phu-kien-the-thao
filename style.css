@@ -368,3 +368,67 @@ footer a { color: var(--primary); text-decoration: none; }
     .chat-widget { width: 220px; left: 10px; bottom: 10px; }
     .chat-header { padding: 10px; font-size: 13px; }
 }
+.partners-section {
+    background: #fff;
+    margin: 40px 5%;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    filter: grayscale(100%); /* Làm logo màu xám cho sang */
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.partner-logos:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.partner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.partner-item img {
+    height: 50px;
+    max-width: 100px;
+    object-fit: contain;
+}
+
+.partner-item span {
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+}
+
+.affiliate-invite {
+    border-top: 1px dashed #ddd;
+    padding-top: 20px;
+}
+
+.btn-partner {
+    background: var(--topbar-bg);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-partner:hover {
+    background: var(--primary);
+    transform: scale(1.05);
+}

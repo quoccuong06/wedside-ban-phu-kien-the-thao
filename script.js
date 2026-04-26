@@ -154,3 +154,18 @@ function renderFlashSale() {
 // Gọi hàm khi trang web tải xong
 startCountdown();
 renderFlashSale();
+function openAffiliateModal() {
+    document.getElementById('partnerModal').style.display = 'flex';
+}
+
+function closePartnerModal() {
+    document.getElementById('partnerModal').style.display = 'none';
+}
+
+// Bổ sung vào window.onclick hiện tại của bạn
+window.onclick = function(event) {
+    let authModal = document.getElementById('authModal');
+    let partnerModal = document.getElementById('partnerModal');
+    if (event.target == authModal) closeAuth();
+    if (event.target == partnerModal) closePartnerModal();
+}
