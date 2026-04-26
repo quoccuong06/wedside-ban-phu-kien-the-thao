@@ -120,3 +120,37 @@ function confirmPaid() {
 
 // Chạy lần đầu tiên
 render(allProducts);
+// 1. Đồng hồ đếm ngược (đếm ngược 2 giờ mỗi lần load)
+function startCountdown() {
+    let time = 7200; // 2 giờ tính bằng giây
+    setInterval(() => {
+        let hours = Math.floor(time / 3600);
+        let mins = Math.floor((time % 3600) / 60);
+        let secs = time % 60;
+        document.getElementById("timer").innerText = 
+            `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        if (time > 0) time--;
+    }, 1000);
+}
+
+// 2. Hiển thị sản phẩm Flash Sale
+function renderFlashSale() {
+    let flashProducts = allProducts.slice(0, 5); // Lấy 5 sản phẩm đầu làm sale
+    let html = "";
+    flashProducts.forEach(p => {
+        let salePrice = p.price * 0.5; // Giảm giá 50%
+        html += `
+        <div class="flash-product">
+            <div class="sale-badge">-50%</div>
+            <img src="${p.img}" width="100%">
+            <p style="font-size:12px">${p.name}</p>
+            <div style="color:#e44d26; font-weight:bold">${salePrice.toLocaleString()}đ</div>
+            <del style="font-size:11px; color:#999">${p.price.toLocaleString()}đ</del>
+        </div>`;
+    });
+    document.getElementById("flashSaleList").innerHTML = html;
+}
+
+// Gọi hàm khi trang web tải xong
+startCountdown();
+renderFlashSale();

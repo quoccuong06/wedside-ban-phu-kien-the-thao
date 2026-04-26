@@ -1,5 +1,6 @@
 :root { 
     --primary: #28a745; 
+    --primary-light: #a8e6cf; /* Xanh lá nhạt mới */
     --dark: #1a1a1a; 
     --price: #e44d26; 
     --topbar-bg: #2c3e50;
@@ -12,7 +13,7 @@ body {
     padding-bottom: 100px; 
 }
 
-/* --- THANH TIỆN ÍCH TRÊN CÙNG (MỚI) --- */
+/* --- THANH TIỆN ÍCH TRÊN CÙNG --- */
 .top-bar {
     background: var(--topbar-bg);
     color: white;
@@ -44,6 +45,84 @@ body {
     border-radius: 10px;
     font-size: 10px;
     margin-left: 3px;
+}
+
+/* --- PHẦN SĂN SALE (FLASH SALE) - TÔNG XANH LÁ NHẠT --- */
+.flash-sale-container {
+    background: #fff;
+    margin: 20px 5%;
+    padding: 25px;
+    border-radius: 15px;
+    border-bottom: 5px solid var(--primary-light); /* Viền xanh nhạt */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.flash-sale-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flash-sale-title {
+    color: var(--primary); /* Chữ xanh lá chính */
+    font-size: 26px;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.countdown-wrapper {
+    font-weight: bold;
+    background: #f1fcf4; /* Nền xanh lá cực nhạt */
+    color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--primary-light);
+}
+
+#timer { 
+    color: #1d7a33; 
+    font-size: 22px; 
+    margin-left: 5px;
+}
+
+.flash-sale-products {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 5px 20px 5px;
+}
+
+/* Ẩn thanh cuộn ngang trên Chrome/Safari để cho đẹp */
+.flash-sale-products::-webkit-scrollbar { display: none; }
+
+.flash-product {
+    min-width: 190px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    transition: 0.3s;
+}
+
+.flash-product:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-5px);
+}
+
+.sale-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--primary-light); /* Tag giảm giá xanh nhạt */
+    color: #155724;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 0 12px 0 12px;
+    font-size: 13px;
 }
 
 /* --- LIÊN HỆ --- */
@@ -176,7 +255,7 @@ nav button:hover, nav button.active {
     font-weight: bold; 
 }
 
-/* --- MODAL (DÙNG CHUNG CHO QR VÀ ĐĂNG NHẬP) --- */
+/* --- MODAL --- */
 #qrModal, .modal { 
     display: none; 
     position: fixed; 
@@ -200,7 +279,6 @@ nav button:hover, nav button.active {
     position: relative; 
 }
 
-/* --- FORM ĐĂNG NHẬP / ĐĂNG KÝ (MỚI) --- */
 .auth-form h2 { color: #333; margin-bottom: 20px; }
 .auth-form input {
     width: 100%;
@@ -208,7 +286,7 @@ nav button:hover, nav button.active {
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-sizing: border-box; /* Giúp input không bị tràn khung */
+    box-sizing: border-box;
 }
 
 .qr-img { 
