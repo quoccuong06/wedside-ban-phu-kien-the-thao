@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siêu Thị Thể Thao - Cường & Thanh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="contact-bar">
+    <span>👤 Admin: <b>Đoàn Quốc Cường</b> - 📞 0988837447</span>
+    <span>👤 Admin: <b>Lê Văn Thanh</b> - 📞 0817737792</span>
+</div>
+
+<header>
+    <h1>🏆 SIÊU THỊ PHỤ KIỆN THỂ THAO PRO</h1>
+</header>
+
+<nav id="categoryNav">
+    <button class="active" onclick="changePage('all', this)">Tất cả đồ</button>
+    <button onclick="changePage('football', this)">Trang Bóng đá</button>
+    <button onclick="changePage('badminton', this)">Trang Cầu lông</button>
+    <button onclick="changePage('gym', this)">Trang Gym & Yoga</button>
+    <button onclick="changePage('running', this)">Trang Chạy bộ</button>
+</nav>
+
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." onkeyup="search()">
+</div>
+
+<h2 id="pageTitle" style="text-align: center; color: #333;">Tất cả sản phẩm</h2>
+
+<div class="container" id="productList"></div>
+
+<div class="cart-fixed">
+    <b>🛒 Giỏ hàng</b><br>
+    Số lượng: <b id="count" style="color:#28a745">0</b> món<br>
+    Tổng: <b id="total" style="color:#e44d26">0</b><b>đ</b>
+    <button onclick="pay()" id="btn-pay-qr">QUÉT MÃ THANH TOÁN</button>
+</div>
+
+<div id="qrModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3>QUÉT MÃ CHUYỂN KHOẢN</h3>
+        <p>Số tiền: <b id="qrTotal" style="color:#e44d26">0đ</b></p>
+        <img id="qrImg" class="qr-img" src="" alt="Mã QR Thanh Toán">
+        <p style="font-size: 13px; color: #666;">Nội dung: <b>Shop Cuong Thanh [ID Đơn hàng]</b></p>
+        <button onclick="confirmPaid()" class="confirm-btn">TÔI ĐÃ CHUYỂN KHOẢN</button>
+    </div>
+</div>
+
+<footer>
+    <p><b>Trường Đại học Lạc Hồng (LHU)</b></p>
+    <p><b>Thông tin sinh viên thực hiện:</b></p>
+    
+    <p>
+        👤 Đoàn Quốc Cường - 124000221: <b>[124000221]</b> | 
+        <a href="https://github.com/quoccuong06]" target="_blank" style="color: #007bff; text-decoration: none;">🔗 GitHub Cường</a>
+    </p>
+    
+    <p>
+        👤 Lê Văn Thanh - 124000512: <b>[124000512]</b> | 
+        <a href="https://github.com/36levanthanh11a15-wq]" target="_blank" style="color: #007bff; text-decoration: none;">🔗 GitHub Thanh</a>
+    </p>
+    
+    <p>© 2026 <b>Đoàn Quốc Cường & Lê Văn Thanh</b></p>
+</footer>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
