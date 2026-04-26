@@ -18,7 +18,6 @@
     <!-- DÒNG MÃ LOGO TRÊN TAB (FAVICON) -->
     <link rel="icon" type="image/png" href="logo.png">
     
-    <!-- ĐÃ XÓA DÒNG LỖI THỪA Ở ĐÂY -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -82,6 +81,24 @@
     <button onclick="pay()" id="btn-pay-qr">QUÉT MÃ THANH TOÁN</button>
 </div>
 
+<!-- NÚT CHAT CSKH (MỚI THÊM) -->
+<div class="chat-widget" id="chatWidget">
+    <div class="chat-header" onclick="toggleChat()">
+        <span>💬 Chat với CSKH</span>
+        <b id="chatToggleIcon">▲</b>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <div class="chat-content">
+            <p>Chào bạn! Cường & Thanh có thể giúp gì cho bạn?</p>
+            <div class="chat-options">
+                <a href="https://zalo.me" target="_blank" class="chat-btn zalo">Zalo: Quốc Cường</a>
+                <a href="https://zalo.me" target="_blank" class="chat-btn zalo">Zalo: Văn Thanh</a>
+                <a href="https://m.me" target="_blank" class="chat-btn messenger">Facebook Messenger</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 2. MODAL ĐĂNG NHẬP / ĐĂNG KÝ -->
 <div id="authModal" class="modal">
     <div class="modal-content auth-form">
@@ -94,17 +111,6 @@
         </div>
         <button class="confirm-btn" onclick="handleAuthAction()">Xác nhận</button>
         <p id="authSwitch" onclick="switchAuth()" style="cursor:pointer; color: #007bff; font-size: 14px; margin-top: 15px;"></p>
-    </div>
-</div>
-
-<div id="qrModal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <h3>QUÉT MÃ CHUYỂN KHOẢN</h3>
-        <p>Số tiền: <b id="qrTotal" style="color:#e44d26">0đ</b></p>
-        <img id="qrImg" class="qr-img" src="" alt="Mã QR Thanh Toán">
-        <p style="font-size: 13px; color: #666;">Nội dung: <b>Shop Cuong Thanh [ID Đơn hàng]</b></p>
-        <button onclick="confirmPaid()" class="confirm-btn">TÔI ĐÃ CHUYỂN KHOẢN</button>
     </div>
 </div>
 
@@ -147,6 +153,19 @@
     function switchAuth() {
         const isLogin = document.getElementById('authTitle').innerText === "Đăng nhập";
         openAuth(isLogin ? 'register' : 'login');
+    }
+
+    // Hàm đóng mở khung chat
+    function toggleChat() {
+        const body = document.getElementById("chatBody");
+        const icon = document.getElementById("chatToggleIcon");
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            icon.innerText = "▲";
+        } else {
+            body.style.display = "block";
+            icon.innerText = "▼";
+        }
     }
 
     window.onclick = function(event) {

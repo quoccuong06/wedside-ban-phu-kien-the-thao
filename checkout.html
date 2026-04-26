@@ -1,57 +1,57 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Thanh Toán - Shop Cường Thanh</title>
-    <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; text-align: center; padding: 20px; background-color: #f0f2f5; }
-        .checkout-container { background: white; max-width: 450px; margin: auto; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .qr-frame { 
-            width: 280px; height: 280px; margin: 20px auto; 
-            border: 3px solid #003399; border-radius: 15px; padding: 10px;
-            display: flex; align-items: center; justify-content: center;
-            background-color: #fff;
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>Thanh Toán - Shop Cường Thanh</title>
+        <style>
+            body { font-family: 'Segoe UI', Arial, sans-serif; text-align: center; padding: 20px; background-color: #f0f2f5; }
+            .checkout-container { background: white; max-width: 450px; margin: auto; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+            .qr-frame { 
+                width: 280px; height: 280px; margin: 20px auto; 
+                border: 3px solid #003399; border-radius: 15px; padding: 10px;
+                display: flex; align-items: center; justify-content: center;
+                background-color: #fff;
+            }
+            .qr-large { width: 100%; height: auto; display: block; }
+            .total-amount { color: #e44d26; font-size: 32px; font-weight: bold; margin: 10px 0; }
+            .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+            .success-btn { background-color: #28a745; color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; }
+            .back-btn { background-color: #6c757d; color: white; border: none; padding: 12px; border-radius: 10px; cursor: pointer; font-size: 15px; }
+            .success-btn:hover { background-color: #218838; }
+        </style>
+    </head>
+    <body>
+
+    <div class="checkout-container">
+        <h2 style="color: #003399;">XÁC NHẬN THANH TOÁN</h2>
+        <p>Số tiền cần chuyển khoản:</p>
+        <div id="displayTotal" class="total-amount">0đ</div>
+        
+        <!-- Chỉ giữ lại 1 khung ảnh QR duy nhất ở đây -->
+        <div class="qr-frame">
+            <img src="qr-thanhtoan.png" alt="Mã QR MB Bank" class="qr-large">
+        </div>
+        
+        <p>Nội dung CK: <b>Thanh toan Shop Cuong Thanh</b></p>
+        <p style="font-size: 14px; color: #555;">Chủ tài khoản: <b>DOAN QUOC CUONG</b></p>
+
+        <div class="btn-group">
+            <button class="success-btn" onclick="confirmPayment()">TÔI ĐÃ THANH TOÁN THÀNH CÔNG</button>
+            <button class="back-btn" onclick="window.location.href='index.html'">Quay lại cửa hàng</button>
+        </div>
+    </div>
+
+    <script>
+        // Lấy số tiền từ trang chủ truyền sang
+        const urlParams = new URLSearchParams(window.location.search);
+        const totalRaw = urlParams.get('total') || "0";
+        document.getElementById('displayTotal').innerText = totalRaw + "đ";
+
+        function confirmPayment() {
+            alert("Cảm ơn bạn! Hệ thống đã ghi nhận thanh toán thành công.");
+            window.location.href = 'index.html';
         }
-        .qr-large { width: 100%; height: auto; display: block; }
-        .total-amount { color: #e44d26; font-size: 32px; font-weight: bold; margin: 10px 0; }
-        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
-        .success-btn { background-color: #28a745; color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        .back-btn { background-color: #6c757d; color: white; border: none; padding: 12px; border-radius: 10px; cursor: pointer; font-size: 15px; }
-        .success-btn:hover { background-color: #218838; }
-    </style>
-</head>
-<body>
+    </script>
 
-<div class="checkout-container">
-    <h2 style="color: #003399;">XÁC NHẬN THANH TOÁN</h2>
-    <p>Số tiền cần chuyển khoản:</p>
-    <div id="displayTotal" class="total-amount">0đ</div>
-    
-    <!-- Chỉ giữ lại 1 khung ảnh QR duy nhất ở đây -->
-    <div class="qr-frame">
-        <img src="qr-thanhtoan.png" alt="Mã QR MB Bank" class="qr-large">
-    </div>
-    
-    <p>Nội dung CK: <b>Thanh toan Shop Cuong Thanh</b></p>
-    <p style="font-size: 14px; color: #555;">Chủ tài khoản: <b>DOAN QUOC CUONG</b></p>
-
-    <div class="btn-group">
-        <button class="success-btn" onclick="confirmPayment()">TÔI ĐÃ THANH TOÁN THÀNH CÔNG</button>
-        <button class="back-btn" onclick="window.location.href='index.html'">Quay lại cửa hàng</button>
-    </div>
-</div>
-
-<script>
-    // Lấy số tiền từ trang chủ truyền sang
-    const urlParams = new URLSearchParams(window.location.search);
-    const totalRaw = urlParams.get('total') || "0";
-    document.getElementById('displayTotal').innerText = totalRaw + "đ";
-
-    function confirmPayment() {
-        alert("Cảm ơn bạn! Hệ thống đã ghi nhận thanh toán thành công.");
-        window.location.href = 'index.html';
-    }
-</script>
-
-</body>
-</html>
+    </body>
+    </html>
