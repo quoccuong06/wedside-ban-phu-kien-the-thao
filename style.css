@@ -445,3 +445,49 @@ footer a { color: var(--primary); text-decoration: none; }
     background: var(--primary);
     transform: scale(1.05);
 }
+
+/* Bộ tăng giảm số lượng */
+.quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.quantity-control input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    height: 26px;
+    border-radius: 5px;
+}
+
+/* Đánh giá sao */
+.stars {
+    color: #ffc107;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Ô bình luận */
+.comment-box {
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+.comment-box input {
+    width: 90%;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    outline: none;
+}
